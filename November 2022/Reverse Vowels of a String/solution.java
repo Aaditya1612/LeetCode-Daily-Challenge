@@ -1,3 +1,5 @@
+// Asked on 04-11-2022 (DD-MM-YYYY)
+
 class Solution {
   boolean isVowel(char c) {
     c = Character.toLowerCase(c);
