@@ -4,29 +4,38 @@
 class MedianFinder {
   private PriorityQueue < Integer > first;
   private PriorityQueue < Integer > second;
-  private boolean isEven = true;
+
+  private boolean isEven;
+
   public MedianFinder() {
     this.first = new PriorityQueue < > (Collections.reverseOrder());
     this.second = new PriorityQueue < > ();
-
+    this.isEven = true;
   }
 
   public void addNum(int num) {
-    if (isEven) {
+    if (this.isEven) {
       second.offer(num);
       first.offer(second.poll());
     } else {
       first.offer(num);
       second.offer(first.poll());
     }
-    isEven = !isEven;
+    this.isEven = !(this.isEven);
   }
 
   public double findMedian() {
-    if (!isEven) {
+    if (!(this.isEven)) {
       return first.peek();
     } else {
       return ((first.peek() + second.peek()) / 2.0);
     }
   }
 }
+
+/**
+ * Your MedianFinder object will be instantiated and called as such:
+ * MedianFinder obj = new MedianFinder();
+ * obj.addNum(num);
+ * double param_2 = obj.findMedian();
+ */
